@@ -13,7 +13,7 @@ def env(variable, fallback_value=None):
 
 
 IF_MATCH = True
-SECRET_KEY = env('SECRET_KEY', '')
+SECRET_KEY = env('SECRET_KEY', 'thisissecret')
 INSTALLED_APPS = ['auth']
 
 CACHE_CONTROL = 'max-age=0, no-cache'

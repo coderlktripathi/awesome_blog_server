@@ -1,12 +1,4 @@
-import logging
 from app import resources
-
-
-log = logging.getLogger(__name__)
-
-not_indexed = {'type': 'string', 'index': 'no'}  # noqa
-not_analyzed = {'type': 'string', 'index': 'not_analyzed'}
-not_enabled = {'type': 'object', 'enabled': False}  # noqa
 
 
 class Resource():
@@ -146,10 +138,8 @@ class Resource():
                 hook_event -= hook_method
                 hook_event += hook_method
 
-        # Register callbacks for operations on other resources
-        # The callback format is: on_<operation>_res_<other_resource>
+        # Register callbacks format (eg: on_<operation>_res_<other_resource>) for operations on other resources
         # where <operation> can be: fetched, fetched_item, create, created, update
-        # updated, delete, deleted
         operations_events = {'fetched': 'fetched_resource',
                              'fetched_item': 'fetched_item',
                              'create': 'insert',
@@ -186,11 +176,4 @@ class Resource():
             'type': 'integer',
             'required': required,
             'nullable': nullable,
-        }
-
-    @staticmethod
-    def not_analyzed_field(type='string'):
-        return {
-            'type': type,
-            'mapping': not_analyzed,
         }

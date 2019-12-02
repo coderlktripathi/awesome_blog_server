@@ -1,8 +1,3 @@
-import logging
-
-log = logging.getLogger(__name__)
-
-
 class BaseService():
     """
     Base service for all endpoints, defines the basic implementation for CRUD datalayer functionality.
@@ -42,7 +37,3 @@ class BaseService():
 
     def on_fetched_item(self, doc):
         pass
-
-
-class Service(BaseService):
-    pass
