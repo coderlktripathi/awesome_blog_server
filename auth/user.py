@@ -48,6 +48,9 @@ class UserResource(Resource):
         'password': {
             'type': 'string',
             'minlength': 5,
+        },
+        'token': {
+            'type': 'string'
         }
         # 'email': {'type': 'email'}
     }
@@ -55,9 +58,10 @@ class UserResource(Resource):
     resource_title = 'user'
     resource_methods = ['GET', 'POST']
     item_methods = ['GET', 'PUT', 'PATCH', 'DELETE']
+    public_methods = ['POST']
 
     additional_lookup = {
-        'url': 'regex("[\w,.:-]+")',
+        'url': r'regex("[\w,.:-]+")',
         'field': 'guid'
     }
 
@@ -65,7 +69,7 @@ class UserResource(Resource):
         'default_sort': [('username', 1)],
         'projection': {
             'password': 0,
-            '_id': 0
+            'token': 0
         }
     }
 
